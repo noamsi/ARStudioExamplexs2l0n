@@ -38,7 +38,16 @@
             </a-marker>
 
             <a-entity camera></a-entity>
+            
+            <!-- "button" -->
+            <a-entity id="refresh-button" geometry="primitive: box" material="color: red" position="0 0 -2"></a>
+
         </a-scene>
-        <button onclick='alert("bla")'>clickme</button>
+        <script>
+            document.querySelector('#refresh-button').addEventListener('click', function() {
+                // Refresh stuff would go here!
+                alert("bla")
+            });
+        </script>
     </body>
 </html>
