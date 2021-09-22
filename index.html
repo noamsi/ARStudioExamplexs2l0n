@@ -40,9 +40,11 @@
             <a-entity camera></a-entity>
             
             <!-- "button" -->
-            <a-entity id="refresh-button" geometry="primitive: box" material="color: red" position="0 0 -2"></a>
+            <!-- a-entity id="refresh-button" geometry="primitive: box" material="color: red" position="0 0 -2"></a -->
 
         </a-scene>
+        <button id="refresh-button" style="position: absolute; bottom: 0; left: 0;">click me</button>
+
         <script>
             document.querySelector('#refresh-button').addEventListener('click', function() {
                 // Refresh stuff would go here!
