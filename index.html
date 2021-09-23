@@ -7,23 +7,31 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
 
         <script>
-            AFRAME.registerComponent('registerevents', {
-                init: function () {
-                    var marker = this.el;
+//             AFRAME.registerComponent('registerevents', {
+//                 init: function () {
+//                     var marker = this.el;
 
-                    marker.addEventListener('markerFound', function() {
-                        var markerId = marker.id;
-                        console.log('markerFound', markerId);
-                        // TODO: Add your own code here to react to the marker being found.
-                    });
+//                     marker.addEventListener('markerFound', function() {
+//                         var markerId = marker.id;
+//                         console.log('markerFound', markerId);
+//                         // TODO: Add your own code here to react to the marker being found.
+//                     });
 
-                    marker.addEventListener('markerLost', function() {
-                        var markerId = marker.id;
-                        console.log('markerLost', markerId);
-                        // TODO: Add your own code here to react to the marker being lost.
-                    });
-                }
-            });
+//                     marker.addEventListener('markerLost', function() {
+//                         var markerId = marker.id;
+//                         console.log('markerLost', markerId);
+//                         // TODO: Add your own code here to react to the marker being lost.
+//                     });
+//                 }
+//             });
+            var m = document.querySelector("a-marker")
+            m.addEventListener("markerFound", (e)=>{
+               console.log("found####")
+            })
+
+            m.addEventListener("markerLost", (e)=>{
+               console.log("####lost")
+            })
         </script>
 </head>
 
