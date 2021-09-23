@@ -58,7 +58,9 @@
             </a-marker>
 
             <a-entity camera></a-entity>
-            <div style="
+            <div 
+                 id="add"
+                 style="
                     border-radius: 10px;
                     font-size: 82px;
                     text-align: center;
@@ -72,13 +74,18 @@
         </a-scene>
         
         <script>
-            var m = document.querySelector("a-marker")
-            m.addEventListener("markerFound", (e)=>{
-               console.log("found####")
+            const add = document.querySelector("#add")
+            add.addEventListener("click", (e) => {
+                console.log("add clicked")
+            })
+            
+            const marker = document.querySelector("a-marker")
+            marker.addEventListener("markerFound", (e)=>{
+               console.log("found####", e)
             })
 
-            m.addEventListener("markerLost", (e)=>{
-               console.log("####lost")
+            marker.addEventListener("markerLost", (e)=>{
+               console.log("####lost", e)
             })
         </script>
     </body>
