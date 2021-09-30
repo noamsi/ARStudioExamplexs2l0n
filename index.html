@@ -29,65 +29,18 @@
 
     <body style="margin: 0; overflow: hidden;">
         <a-scene
-            vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-            id="scene"
+            vr-mode-ui="enabled: false"
             embedded
-            gesture-detector
-        >
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/marker.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-box color="tomato" depth="2" height="4" width="0.5"></a-box>
+            arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
 
-                <a-image
-                    src="assets/asset.jpeg"
-                    scale="1 1 1"
-                    class="clickable"
-                    rotation="-90 0 0"
-                    gesture-handler
-                ></a-image>
-            </a-marker>
+            <a-camera gps-camera rotation-reader></a-camera>
 
-            <a-entity camera></a-entity>
-            <div 
-                 id="add"
-                 style="
-                    border-radius: 10px;
-                    font-size: 82px;
-                    text-align: center;
-                    background: red;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100px;
-                    height: 100px;
-                    z-index: 1000;
-            ">+</div>
+            <a-entity 
+                gltf-model="./assets/magnemite/scene.gltf" 
+                rotation="0 180 0" 
+                scale="0.15 0.15 0.15" 
+                gps-entity-place="longitude: 12.489820; latitude: 41.892590;" 
+                animation-mixer/>
         </a-scene>
-        
-        <script>
-            const add = document.querySelector("#add")
-            add.addEventListener("click", (e) => {
-                console.log("add clicked")
-            })
-            
-            const marker = document.querySelector("a-marker")
-            marker.addEventListener("markerFound", (e)=>{
-               console.log("found####", e)
-            })
-
-            marker.addEventListener("markerLost", (e)=>{
-               console.log("####lost", e)
-            })
-        </script>
     </body>
 </html>
