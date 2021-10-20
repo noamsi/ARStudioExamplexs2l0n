@@ -2,17 +2,11 @@
 <html>
     <head>
         <script>
-            const updatePostion = callback => {
+            const execPositionLoop = () => {
                 navigator.geolocation.getCurrentPosition((position) => {
                     document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
-//                     callback && callback()
-                })
-            }
-            
-            const execPositionLoop = () => {
-                updatePostion(() => {
                     setTimeout(execPositionLoop, 500)
-                })
+                });
             }
             
             const handleOrientationEvent = event => {
@@ -24,7 +18,6 @@
                 var frontToBack = event.beta;
 
                 document.querySelector('#orientation').innerText = `rotateDegrees: ${rotateDegrees}; leftToRight: ${leftToRight}; frontToBack: ${frontToBack}`
-                updatePostion()
             }
             
             const handleMotionEvent = event => {
@@ -33,12 +26,11 @@
                 var z = event.accelerationIncludingGravity.z;
 
                 document.querySelector('#motion').innerText = `x: ${x}; y: ${y}; z: ${z}`
-                updatePostion()
             }
 
 
             window.onload = () => {
-                //execPositionLoop()
+                execPositionLoop()
                 window.addEventListener("devicemotion", handleMotionEvent, true);
                 window.addEventListener("deviceorientation", handleOrientationEvent, true);
             }
