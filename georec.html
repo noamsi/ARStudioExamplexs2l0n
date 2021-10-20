@@ -5,14 +5,14 @@
             const updatePostion = callback => {
                 navigator.geolocation.getCurrentPosition((position) => {
                     document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
-                    callback && callback()
-                });
+//                     callback && callback()
+                })
             }
             
             const execPositionLoop = () => {
                 updatePostion(() => {
                     setTimeout(execPositionLoop, 500)
-                });
+                })
             }
             
             const handleOrientationEvent = event => {
