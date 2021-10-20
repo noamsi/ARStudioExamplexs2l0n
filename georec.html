@@ -4,7 +4,7 @@
         <script>
             const execPositionLoop = () => {
                 navigator.geolocation.getCurrentPosition((position) => {
-                    document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
+                    document.querySelector('#content').innerText = `@@@@@@@@@@@@@@@.    latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
                     setTimeout(execPositionLoop, 500)
                 });
             }
@@ -30,9 +30,9 @@
 
 
             window.onload = () => {
-                execPositionLoop()
                 window.addEventListener("devicemotion", handleMotionEvent, true);
                 window.addEventListener("deviceorientation", handleOrientationEvent, true);
+                execPositionLoop()
             }
         </script>
   </head>
