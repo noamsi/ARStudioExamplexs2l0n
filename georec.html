@@ -28,10 +28,27 @@
                 document.querySelector('#motion').innerText = `x: ${x}; y: ${y}; z: ${z}`
             }
 
-
-            window.onload = () => {
-                window.addEventListener("devicemotion", handleMotionEvent, true);
+            const initOrientationListener = () => {
                 window.addEventListener("deviceorientation", handleOrientationEvent, true);
+            }
+            
+            const getPermissionsAndCall = (Device, callback) => {
+                if (typeof Device.requestPermission === "function") {
+                    Device.requestPermission()
+                        .then(permissionState => {
+                            if (permissionState === "granted") {
+                                callback()
+                            }
+                        })
+                        .catch(console.error);
+                } else {
+                    callback()
+                }
+            }
+            
+            window.onload = () => {
+                getPermissionsAndCall(DeviceOrientationEvent, initOrientationListener)
+                getPermissionsAndCall(DeviceMotionEvent, initOrientationListener)
                 execPositionLoop()
             }
         </script>
