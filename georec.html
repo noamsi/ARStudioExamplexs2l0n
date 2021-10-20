@@ -9,14 +9,37 @@
                 });
             }
             
+            const handleOrientationEvent = event => {
+                // alpha: rotation around z-axis
+                var rotateDegrees = event.alpha;
+                // gamma: left to right
+                var leftToRight = event.gamma;
+                // beta: front back motion
+                var frontToBack = event.beta;
+
+                document.querySelector('#orientation').innerText = `rotateDegrees: ${rotateDegrees}; leftToRight: ${leftToRight}; frontToBack: ${frontToBack}`
+            }
+            
+            const handleMotionEvent = event => {
+                var x = event.accelerationIncludingGravity.x;
+                var y = event.accelerationIncludingGravity.y;
+                var z = event.accelerationIncludingGravity.z;
+
+                document.querySelector('#motion').innerText = `x: ${x}; y: ${y}; z: ${z}`
+            }
+
+
             window.onload = () => {
                 execPositionLoop()
+                window.addEventListener("devicemotion", handleMotionEvent, true);
+                window.addEventListener("deviceorientation", handleOrientationEvent, true);
             }
         </script>
   </head>
 
     <body style="margin: 0; overflow: hidden;">
-      <div id="content" >1</div>
-      <div id="dContent" >2</div>
+      <div id="content"></div>
+      <div id="motion"></div>
+      <div id="orientation"></div>
     </body>
 </html>
