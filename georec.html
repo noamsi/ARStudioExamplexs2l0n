@@ -4,7 +4,7 @@
         <script>
             const execPositionLoop = () => {
                 navigator.geolocation.getCurrentPosition((position) => {
-                    document.querySelector('#content').innerText = `@@@@@@@@@@@@@@@.    latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
+                    document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
                     setTimeout(execPositionLoop, 500)
                 });
             }
@@ -54,7 +54,7 @@
         </script>
   </head>
 
-    <body style="margin: 0; overflow: hidden;">
+    <body style="position: fixed; top: 50%; left: 50%;">
       <div id="content"></div>
       <div id="motion"></div>
       <div id="orientation"></div>
