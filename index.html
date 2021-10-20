@@ -11,7 +11,10 @@
               navigator.geolocation.getCurrentPosition((position) => {
                  // document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
 //                    document.querySelector('a-image').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
-                   document.querySelector('a-image').setAttribute('gps-entity-place', `latitude: 32.0970; longitude: 34.7745;`)
+                   document.querySelector('#orig').setAttribute('gps-entity-place', `latitude: 32.0970; longitude: 34.7745;`)
+                   document.querySelector('#yrot').setAttribute('gps-entity-place', `latitude: 32.0970; longitude: 34.7745;`)
+                   document.querySelector('#xrot').setAttribute('gps-entity-place', `latitude: 32.0970; longitude: 34.7745;`)
+                   document.querySelector('#zrot').setAttribute('gps-entity-place', `latitude: 32.0970; longitude: 34.7745;`)
               });
           }
 
@@ -45,7 +48,10 @@
             <a-camera gps-camera rotation-reader></a-camera>
 
             <!--a-box color="red" depth="2" height="4" width="0.5"></a-box -->
-            <a-image src="https://noamsi.github.io/ARStudioExamplexs2l0n/assets/asset.jpeg"></a-image>
+            <a-image id="orig" src="https://noamsi.github.io/ARStudioExamplexs2l0n/assets/asset.jpeg"></a-image>
+            <a-image id="yrot" src="https://noamsi.github.io/ARStudioExamplexs2l0n/assets/asset.jpeg" rotation="45 0 0"></a-image>
+            <a-image id="xrot" src="https://noamsi.github.io/ARStudioExamplexs2l0n/assets/asset.jpeg" rotation="0 45 0"></a-image>
+            <a-image id="zrot" src="https://noamsi.github.io/ARStudioExamplexs2l0n/assets/asset.jpeg" rotation="0 0 45"></a-image>
             
 <!--             <a-entity 
                 gltf-model="./assets/magnemite/scene.gltf" 
