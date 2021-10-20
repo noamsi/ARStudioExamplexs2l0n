@@ -2,39 +2,15 @@
 <html>
     <head>
         <script>
-              var id, target, options;
-
-            function success(pos) {
-              var crd = pos.coords;
-
-              if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
-                   document.querySelector('#dContent').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
-                    navigator.geolocation.clearWatch(id);
-              }
+            const execPositionLoop = () => {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
+                    setTimeout(execPositionLoop, 500)
+                });
             }
-
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-}
-
-target = {
-  latitude : 0,
-  longitude: 0
-};
-
-options = {
-  enableHighAccuracy: false,
-  timeout: 5000,
-  maximumAge: 0
-};
-
+            
             window.onload = () => {
-              navigator.geolocation.getCurrentPosition((position) => {
-                   document.querySelector('#content').innerText = `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`
-              });
-
-                id = navigator.geolocation.watchPosition(success, error, options);
-
+                execPositionLoop()
             }
         </script>
   </head>
