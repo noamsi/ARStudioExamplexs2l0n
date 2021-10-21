@@ -141,6 +141,7 @@ function start(container, marker, video, input_width, input_height, canvas_draw,
                   break;
                 }
                 case "found": {
+                    document.getElementById("#sethere").innerText = JSON.stringify(msg)
                     found(msg);
                     break;
                 }
