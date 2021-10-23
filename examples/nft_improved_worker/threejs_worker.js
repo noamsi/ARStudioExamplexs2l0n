@@ -27,6 +27,12 @@ var markers = {
         dpi: 250,
         url: "./examples/DataNFT/pinball",
     },
+    "home_window_small": {
+        width: 1000,
+        height: 1333,
+        dpi: 72,
+        url: "./examples/DataNFT/home_window_small",
+    },
 };
 
 var setMatrix = function (matrix, value) {
