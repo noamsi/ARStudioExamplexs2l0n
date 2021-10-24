@@ -21,7 +21,8 @@ var ar = null;
 var markerResult = null;
 
 function load(msg) {
-
+    console.log("load load load:::", msg)
+    
     var param = new ARCameraParam(msg.camera_para);
 
     param.onload = function () {
