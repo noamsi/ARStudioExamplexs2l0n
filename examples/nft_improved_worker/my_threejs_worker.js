@@ -119,7 +119,9 @@ function start(container, markers, video, input_width, input_height, canvas_draw
 
         worker = new Worker('../../js/artoolkit.worker.js');
 
+        console.log('before makers')
         markers.forEach(marker => {
+            console.log('marker:', marker.url)
           worker.postMessage({ type: "load", pw: pw, ph: ph, camera_para: camera_para, marker: '../' + marker.url });
         })
 
