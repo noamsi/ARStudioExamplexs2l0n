@@ -1873,9 +1873,11 @@
 
     var marker_count = 0;
     function addMarker(arId, url, callback, onError) {
+	    console.log('addMarker(arId, url', addMarker, arId, url, marker_count)
         var filename = '/marker_' + marker_count++;
         ajax(url, filename, function () {
             var id = Module._addMarker(arId, filename);
+	    console.log('addMarker(arId, url', addMarker, arId, id)
             if (callback) callback(id);
         }, function (errorNumber) { if (onError) onError(errorNumber) });
     }
