@@ -578,6 +578,8 @@
 	*/
     ARController.prototype.loadNFTMarker = function (markerURL, onSuccess, onError) {
         var self = this;
+	    
+	    console.log('loadNFTMarker:', self, markerURL, this.id)
         if (markerURL) {
           return artoolkit.addNFTMarker(this.id, markerURL, function (id) {
               self.nftMarkerCount = id + 1;
