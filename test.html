@@ -1,7 +1,7 @@
 <html>
   <body>
     <div id="theater">
-      <div style="background: red; width: 100px; height: 100px"></div>
+      <div id="start" style="border-radius: 30px; background: red; width: 30px; height: 30px; position: absolute;"></div>
       <video id="video" controls="false" style="visibility: hidden; height: 0;"></video>
       <canvas id="canvas"></canvas>
       <label>
@@ -15,29 +15,35 @@
         video: true,
       };
 
-      var canvas = document.getElementById('canvas');
-      var ctx = canvas.getContext('2d');
-      var video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const video = document.getElementById('video');
+      const startBtn = document.getElementById('start');
+      
+      startBtn.onclick = () => {
+        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+          video.srcObject = stream;
+        });
 
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        video.srcObject = stream;
-      });
+        // set canvas size = video size when known
+        video.addEventListener('loadedmetadata', function() {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+        });
 
-      // set canvas size = video size when known
-      video.addEventListener('loadedmetadata', function() {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-      });
+        video.addEventListener('play', function() {
+          var $this = this; //cache
+          (function loop() {
+            if (!$this.paused && !$this.ended) {
+              ctx.drawImage($this, 0, 0);
+              setTimeout(loop, 1000 / 30); // drawing at 30fps
+            }
+          })();
+        }, 0);
+        
+        video.play()
 
-      video.addEventListener('play', function() {
-        var $this = this; //cache
-        (function loop() {
-          if (!$this.paused && !$this.ended) {
-            ctx.drawImage($this, 0, 0);
-            setTimeout(loop, 1000 / 30); // drawing at 30fps
-          }
-        })();
-      }, 0);
+      }
     </script>
   </body>
 </html>
