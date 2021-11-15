@@ -1,7 +1,7 @@
 <html>
   <body>
     <div id="theater">
-      <video id="video" src="http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv" controls="false"></video>
+      <video id="video" controls="false"></video>
       <canvas id="canvas"></canvas>
       <label>
         <br />Try to play me :)
@@ -10,9 +10,17 @@
     </div>
     
     <script>
+      const constraints = {
+        video: true,
+      };
+
       var canvas = document.getElementById('canvas');
       var ctx = canvas.getContext('2d');
       var video = document.getElementById('video');
+
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        video.srcObject = stream;
+      });
 
       // set canvas size = video size when known
       video.addEventListener('loadedmetadata', function() {
